@@ -1,0 +1,11 @@
+KALMIX ROS 2 RTK Bridge
+Copyright 2026 KALMIX
+
+The source files in this repository were independently authored for KALMIX and
+are licensed under Apache-2.0. This repository does not include device SDKs,
+firmware, third-party GNSS correction data, NTRIP credentials, or third-party
+brand assets.
+
+At build and runtime it uses separately installed dependencies including ROS 2,
+Boost, OpenSSL, mavros_msgs, nmea_msgs, diagnostic_msgs, and sensor_msgs.
+Those dependencies remain subject to their own license terms.

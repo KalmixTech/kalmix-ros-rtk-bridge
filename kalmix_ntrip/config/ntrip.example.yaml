@@ -1,0 +1,31 @@
+# Copy this file to ntrip.local.yaml for a deployment-specific configuration.
+# ntrip.local.yaml is ignored by Git and may contain the NTRIP credentials.
+kalmix_ntrip_client:
+  ros__parameters:
+    host: "caster.example.org"
+    port: 2101
+    mountpoint: "REPLACE_ME"
+    username: ""
+    password: ""
+    use_tls: false
+    send_gga: true
+    require_nmea_checksum: true
+    gga_interval_ms: 1000
+    connect_timeout_ms: 10000
+    handshake_timeout_ms: 10000
+    reconnect_initial_ms: 1000
+    reconnect_max_ms: 30000
+    max_reconnect_attempts: 0  # 0 means retry until the node is stopped
+    nmea_topic: "/nmea"
+    rtcm_topic: "/rtcm"
+    diagnostics_topic: "/diagnostics"
+    # Writes validated RTCM 3 frames to kalmix_rtcm3.bin and NTRIP events to
+    # kalmix_ntrip_operation.log. Files rotate at the configured size.
+    # The default path is for the documented root-user Docker container.
+    # On native Linux, change BOTH package YAML files to an absolute, writable
+    # user path, e.g. /home/your-linux-user/kalmix-rtk-logs. Do not use ~ or
+    # $HOME here: ROS parameter values are passed literally and are not expanded.
+    enable_file_logging: true
+    log_directory: "/root/kalmix-rtk-logs"
+    log_max_file_size_mb: 50
+    log_max_files: 7

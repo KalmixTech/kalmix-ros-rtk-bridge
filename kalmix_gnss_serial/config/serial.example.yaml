@@ -1,0 +1,24 @@
+# Copy this file to serial.local.yaml for deployment-specific device settings.
+# serial.local.yaml is ignored by Git.
+kalmix_gnss_serial_bridge:
+  ros__parameters:
+    serial_port: "/dev/ttyUSB0"
+    baud_rate: 115200
+    nmea_topic: "/nmea"
+    fix_topic: "/fix"
+    rtcm_topic: "/rtcm"
+    read_period_ms: 20
+    write_timeout_ms: 1000
+    reconnect_interval_ms: 5000
+    require_nmea_checksum: true
+    publish_nav_sat_fix: true
+    # Writes validated NMEA sentences to kalmix_nmea.log and serial events to
+    # kalmix_serial_operation.log. Files rotate at the configured size.
+    # The default path is for the documented root-user Docker container.
+    # On native Linux, change BOTH package YAML files to an absolute, writable
+    # user path, e.g. /home/your-linux-user/kalmix-rtk-logs. Do not use ~ or
+    # $HOME here: ROS parameter values are passed literally and are not expanded.
+    enable_file_logging: true
+    log_directory: "/root/kalmix-rtk-logs"
+    log_max_file_size_mb: 50
+    log_max_files: 7

@@ -252,4 +252,3 @@ This release contains the ROS 2 Jazzy implementation only. A future ROS 1 implem
 ## License
 
 Copyright 2026 KALMIX. Licensed under Apache-2.0. Before public release, replace the `.example` maintainer address in both `package.xml` files with KALMIX's approved public open-source contact address.
-

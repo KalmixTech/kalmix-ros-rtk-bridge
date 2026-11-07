@@ -1,0 +1,16 @@
+build/
+install/
+log/
+logs/
+.vscode/
+.idea/
+*.log
+*.bin
+*.bag
+*.db3
+*.bz2
+*.bzip
+*.orig
+*.rej
+.env
+**/config/*.local.yaml

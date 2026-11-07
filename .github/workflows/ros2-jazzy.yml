@@ -1,0 +1,26 @@
+name: ROS 2 Jazzy
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-24.04
+    container: osrf/ros:jazzy-desktop
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install -y libboost-system-dev libssl-dev ros-jazzy-mavros-msgs ros-jazzy-nmea-msgs ros-jazzy-sensor-msgs
+      - name: Build
+        run: |
+          . /opt/ros/jazzy/setup.sh
+          colcon build --event-handlers console_direct+
+      - name: Test
+        run: |
+          . /opt/ros/jazzy/setup.sh
+          . install/setup.sh
+          colcon test --event-handlers console_direct+
+          colcon test-result --verbose
